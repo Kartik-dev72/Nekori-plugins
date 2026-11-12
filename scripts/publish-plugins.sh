@@ -55,7 +55,7 @@ if [[ "$1" == "--all-branches" ]]; then
     cp -r .js/plugins .js/src/plugins
     git add -f public/static .dist .js/src/plugins total.svg
     git commit -m "chore: Publish Plugins From All Branches"
-    git push -f origin $dist
+    git push -f origin "$dist" || { echo "ERROR: Failed to push $dist to origin"; exit 1; }
     git checkout -f $branch
     echo "✅ Published all branches to $dist"
     echo "::endgroup::"
